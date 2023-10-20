@@ -18,6 +18,7 @@
 
     <button onclick="redirectToKeycloak()">Login</button>
     <button onclick="copyToClipboard()">Copy Access Token</button>
+    <button class="button button-outline" onclick="logout()">Logout</button>
 
     <div class="container">
         <div class="row">
@@ -35,13 +36,21 @@
             </div>
         </div>
         <div class="row hidden-content">
-            <input type="text" id="AccessTokenContent" class="hidden-content">
-            <p id="AccessTokenContent"></p>
+            <input type="text" id="AccessTokenContent">
+        </div>
+        <div class="row hidden-content">
+            <input type="text" id="IDTokenContent">
         </div>
     </div>
     
     <script src="config.js"></script>
     <script>
+
+        function logout() {
+            var IDToken = document.getElementById("IDTokenContent");
+            var keycloakLogoutUrl = keycloak.url + '/realms/' + keycloak.realm + '/protocol/openid-connect/logout?post_logout_redirect_uri=' + keycloak.redirectUriEncoder + '&id_token_hint=' + IDToken.value;
+            window.location.replace(keycloakLogoutUrl);
+        }
 
         function copyToClipboard() {
             var copyText = document.getElementById("AccessTokenContent");
@@ -110,6 +119,8 @@
                     document.getElementById('accessTokenDisplay').innerText = decodedTokenFormatted;
 
                     var idToken = responseData.id_token;
+
+                    document.getElementById("IDTokenContent").value = idToken;
                     var decodedIdToken = decodeToken(idToken);
                     var decodedIdTokenFormatted = JSON.stringify(decodedIdToken, null, 2);
                     document.getElementById('IDTokenDisplay').innerText = decodedIdTokenFormatted;
