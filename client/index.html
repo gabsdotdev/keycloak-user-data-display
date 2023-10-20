@@ -14,11 +14,19 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to my Keycloak application! Below I show the user information</h1>
+    <div class="container">
+        <h1 class="text-center">Welcome to my Keycloak application! Below I show the user information</h1>
+    </div>
 
-    <button onclick="redirectToKeycloak()">Login</button>
-    <button onclick="copyToClipboard()">Copy Access Token</button>
-    <button class="button button-outline" onclick="logout()">Logout</button>
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <button onclick="redirectToKeycloak()">Login</button>
+                <button onclick="copyToClipboard()">Copy Access Token</button>
+                <button class="button button-outline" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
 
     <div class="container">
         <div class="row">

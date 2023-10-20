@@ -8,3 +8,10 @@ services:
     environment:
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
+
+  client:
+    image: nginx
+    ports: 
+      - 8000:80
+    volumes:
+      - ../client:/usr/share/nginx/html      
