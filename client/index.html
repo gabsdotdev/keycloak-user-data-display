@@ -78,7 +78,7 @@
         }
 
         function redirectToKeycloak() {
-            var keycloakLoginUrl = keycloak.url + '/realms/' + keycloak.realm + '/protocol/openid-connect/auth?scope=openid&client_id=' + keycloak.clientId + '&redirect_uri='+ keycloak.redirectUriEncoder + '&response_type=code';
+            var keycloakLoginUrl = keycloak.url + '/realms/' + keycloak.realm + '/protocol/openid-connect/auth?scope=openid&client_id=' + keycloak.clientId + '&redirect_uri='+ encodeURIComponent(keycloak.redirectUri) + '&response_type=code';
             window.location.replace(keycloakLoginUrl);
         }
 
