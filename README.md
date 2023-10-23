@@ -12,11 +12,21 @@ In summary, here's how the project works.
 
 You need to fill the params below:
 
-- `url`: TO DO.
-- `realm`: TO DO.
-- `clientId`: TO DO.
-- `redirectUriEncoder`: TO DO.
-- `redirectUri`: TO DO.
+- `url`: The URL of the Keycloak server.
+- `realm`: The name of the realm in Keycloak.
+- `clientId`: The unique identifier assingned to the client in Keycloak for authentication.
+- `redirectUri`: The URI redirect where your user will be redirected after login.
+
+Exemplo config file:
+
+```javascript
+var keycloak = {
+    url : 'http://127.0.0.1:8080', // Set your keycloak base url
+    realm: 'sandbox', // Set your realm
+    clientId: 'sandbox_client', // Set your clientId
+    redirectUri: 'http://127.0.0.1:8000/index.html' // Set your URI redirection after login
+};
+```
 
 ## Requirements
 
