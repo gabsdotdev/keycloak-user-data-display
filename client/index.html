@@ -56,7 +56,8 @@
 
         function logout() {
             var IDToken = document.getElementById("IDTokenContent");
-            var keycloakLogoutUrl = keycloak.url + '/realms/' + keycloak.realm + '/protocol/openid-connect/logout?post_logout_redirect_uri=' + keycloak.redirectUriEncoder + '&id_token_hint=' + IDToken.value;
+            var redirectUriEncoder = encodeURIComponent(keycloak.redirectUri);
+            var keycloakLogoutUrl = keycloak.url + '/realms/' + keycloak.realm + '/protocol/openid-connect/logout?post_logout_redirect_uri=' + redirectUriEncoder + '&id_token_hint=' + IDToken.value;
             window.location.replace(keycloakLogoutUrl);
         }
 
